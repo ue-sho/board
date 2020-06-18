@@ -12,6 +12,7 @@ class BoardsController < ApplicationController # コントローラーの継承�
 
   def create
     board = Board.create(board_params)
+    flash[:notice] = "#{board.title} の掲示板を作成しました" # フラッシュ変数　次に参照されるまで保存される
     redirect_to board # idに対応したURLにリダイレクトをしてくれる
   end
 
@@ -30,7 +31,7 @@ class BoardsController < ApplicationController # コントローラーの継承�
   def destroy
     @board.delete
 
-    redirect_to boards_path
+    redirect_to boards_path, flash: { notice: "「#{@board.title}」の掲示板が削除されました" } # リダイレクトでフラッシュする方法
   end
 
   private

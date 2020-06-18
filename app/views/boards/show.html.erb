@@ -5,5 +5,8 @@
   </div>
 </div>
 
+<% if flash[:notice] %> <%# nilじゃないか確認 %>
+  <div class="alert alert-primary"><%= flash[:notice] %></div>
+<% end %>
 <%# <%= render partial: 'board', object: @board %>
 <%= render @board %> <%# 上と同じ意味%>
