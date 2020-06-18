@@ -7,13 +7,20 @@ class BoardsController < ApplicationController # コントローラーの継承�
   end
 
   def new
-    @board = Board.new
+    @board = Board.new(flash[:board])
   end
 
   def create
-    board = Board.create(board_params)
-    flash[:notice] = "#{board.title} の掲示板を作成しました" # フラッシュ変数　次に参照されるまで保存される
-    redirect_to board # idに対応したURLにリダイレクトをしてくれる
+    board = Board.new(board_params)
+    if board.save
+      flash[:notice] = "#{board.title} の掲示板を作成しました" # フラッシュ変数　次に参照されるまで保存される
+      redirect_to board # idに対応したURLにリダイレクトをしてくれる
+    else  
+      redirect_to new_board_path, flash: {
+        board: board,  # 失敗したら保存しておいて、もう一度newメソッドが呼ばれる時にデータが保存されている状態を作る
+        error_messages: board.errors.full_messages
+      }
+    end
   end
 
   def show

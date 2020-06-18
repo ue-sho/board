@@ -30,9 +30,10 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'bootstrap', '~> 4.0.0'
-gem 'mini_racer'
-gem 'kaminari'
+gem 'bootstrap', '~> 4.0.0'  # design
+gem 'mini_racer'             # booststrapに関係あるやつかな？
+gem 'kaminari'               # ページング機能
+gem 'rails-i18n'             # エラーメッセージを日本語化する
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
