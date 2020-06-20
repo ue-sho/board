@@ -24,15 +24,23 @@ class BoardsController < ApplicationController # コントローラーの継承�
   end
 
   def show
+    # @comment = @board.comments.new  保存されていないコメントが代入されてしまう
+    @comment = Comment.new(board_id: @board.id)  # これなら保存されたやつになる
   end
 
   def edit
   end
 
   def update
-    @board.update(board_params)
-
-    redirect_to @board # リダイレクト
+    if @board.update(board_params)
+      flash[:notice] = "#{@board.title} の掲示板を更新しました" 
+      redirect_to @board # リダイレクト
+    else  
+      redirect_to new_board_path, flash: {
+        board: @board,  # 失敗したら保存する
+        error_messages: @board.errors.full_messages
+      }
+    end
   end
 
   def destroy

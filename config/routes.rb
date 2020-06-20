@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   # resources :boards, only: [:index, :new, :create, :show, :edit, :update] # 基本的なルーティングを追加できる　複数形で書く 限定できる
 
   resources :boards # 全適用
+  resources :comments, only: %i[create destroy]
 end

@@ -38,6 +38,7 @@ gem 'rails-i18n'             # エラーメッセージを日本語化する
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'rails-flog', require: 'flog' # binding-pryで止めた時にリクエストパラメータを見やすく整形してくる
 end
 
 group :development do

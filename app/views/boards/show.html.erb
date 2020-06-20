@@ -10,3 +10,10 @@
 <% end %>
 <%# <%= render partial: 'board', object: @board %>
 <%= render @board %> <%# 上と同じ意味%>
+
+<div class="p-comment_list">
+  <div class="p-comment_listTitle">コメント</div>
+  <%= render @board.comments %> <%# コメントの数だけレンダリングされる %>
+</div>
+
+<%= render partial: 'comments/form', locals: { comment: @comment } %>
