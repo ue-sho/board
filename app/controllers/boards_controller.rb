@@ -44,7 +44,7 @@ class BoardsController < ApplicationController # コントローラーの継承�
   end
 
   def destroy
-    @board.delete
+    @board.destroy
 
     redirect_to boards_path, flash: { notice: "「#{@board.title}」の掲示板が削除されました" } # リダイレクトでフラッシュする方法
   end
@@ -52,7 +52,7 @@ class BoardsController < ApplicationController # コントローラーの継承�
   private
 
   def board_params
-    params.require(:board).permit(:name, :title, :body)
+    params.require(:board).permit(:name, :title, :body, tag_ids: [])
   end
 
   def set_target_board

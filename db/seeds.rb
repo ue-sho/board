@@ -9,4 +9,13 @@ if Rails.env == 'development'
     (1..50).each do |i|
         Board.create(name: "ユーザー#{i}", title: "タイトル#{i}", body: "本文#{i}") # 開発用に５０件のデータを作成
     end
+
+    Tag.create([
+        {name: 'Ruby'},
+        {name: 'Ruby on Rails4'},
+        {name: 'Ruby on Rails5'},
+        {name: 'Python2'},
+        {name: 'Python3'},
+        {name: 'Django2'}
+    ])
 end
