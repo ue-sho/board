@@ -9,5 +9,5 @@
 #
 class Tag < ApplicationRecord
     has_many :board_tag_relations, dependent: :delete_all  # destroyメソッドのとき有効
-    has_many :board, through: :board_tag_relations         # 中間テーブルを経由する事を示す
+    has_many :boards, through: :board_tag_relations         # 中間テーブルを経由する事を示す
 end

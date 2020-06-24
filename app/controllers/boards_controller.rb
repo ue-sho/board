@@ -3,7 +3,8 @@ class BoardsController < ApplicationController # コントローラーの継承�
   before_action :set_target_board, only: %i[show edit update destroy] # 各アクションが行われる前に実行される
   
   def index
-    @boards = Board.page(params[:page]) # デフォルトは２５件のデータを取得する（ページごと）　kaminariの機能
+    @boards = params[:tag_id].present? ? Tag.find(params[:tag_id]).boards : Board.all #　三項演算子
+    @boards = @boards.page(params[:page]) # デフォルトは２５件のデータを取得する（ページごと）　kaminariの機能
   end
 
   def new
